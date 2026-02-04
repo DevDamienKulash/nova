@@ -1,0 +1,491 @@
+/* ===== Reset ===== */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* ===== Design Tokens ===== */
+:root {
+  --frame-width: 1440px;
+
+  --page-top-home: #4b808e;
+  --page-top-about: #4b518e;
+  --page-top-contact: #764b8e;
+  --page-mid: #4b808e;
+  --page-bottom: #f3f5f7;
+
+  --page-top: var(--page-top-home);
+
+  --font-head: "Sansation", system-ui, sans-serif;
+  --font-body: "Sansation Light", system-ui, sans-serif;
+
+  --z-spline: 0;
+  --z-content: 10;
+  --z-nav: 20;
+}
+
+/* ===== Text color & smoothing ===== */
+body {
+  color: rgba(255, 255, 255, 0.92);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(
+    to bottom,
+    var(--page-top) 0%,
+    var(--page-mid) 55%,
+    var(--page-bottom) 100%
+  );
+}
+/* A centered 1440px frame we can reuse on all pages */
+.frame {
+  width: var(--frame-width);
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+/* ===== Spline Layer ===== */
+#spline-layer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-spline);
+  pointer-events: auto;
+}
+#spline-layer spline-viewer {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ===== App Wrapper ===== */
+#app {
+  position: relative;
+  z-index: var(--z-content);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ===== Navigation ===== */
+.nav,
+.nav {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  z-index: var(--z-nav);
+  pointer-events: auto;
+}
+
+.nav-inner {
+  width: 1300px;
+  height: 61px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 54px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(14px);
+}
+
+.nav-btn {
+  width: 150px;
+  height: 45px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: var(--font-body);
+  font-size: 28px;
+  letter-spacing: 0.06em;
+
+  color: rgba(0, 0, 0, 0.45);
+  background: rgba(255, 255, 255, 0.12);
+
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 999px;
+
+  cursor: pointer;
+  transition:
+    background 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(0, 0, 0, 0.22);
+  transform: translateY(-1px);
+}
+.nav-btn.active {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(0px);
+  opacity: 0.9;
+}
+.nav-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.55);
+  outline-offset: 4px;
+}
+
+/* ===== Pages ===== */
+.page {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0;
+  transform: translateY(10px);
+  filter: blur(6px);
+  pointer-events: none;
+
+  transition:
+    opacity 520ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.page.active {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  pointer-events: none;
+}
+
+/* ===== Home ===== */
+.page-home {
+  width: 100%;
+  height: 100%;
+}
+
+.home-left {
+  position: absolute;
+  left: 60px;
+  top: 58%;
+  transform: translateY(-50%);
+}
+
+.home-center {
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Title */
+.home-title {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: 140px;
+  letter-spacing: 15px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Subtitle */
+.home-subtitle {
+  margin-top: 22px;
+  font-family: var(--font-body);
+  font-size: 24px;
+  letter-spacing: 8px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.75);
+}
+/* Conversation Box */
+.conversation-box {
+  width: 400px;
+  height: 475px;
+}
+
+/* ===== Glass ===== */
+.glass {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  border-radius: 22px;
+}
+/* Chat card behavior + padding */
+.chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 14px;
+
+  padding: 22px;
+}
+
+/* Enable interaction inside chat */
+.chat,
+.chat * {
+  pointer-events: auto;
+}
+
+/* Messages area */
+.chat-messages {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Divider */
+.chat-divider {
+  height: 1px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Input row */
+.chat-input {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+}
+
+/* Input text */
+.chat-text {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+
+  font-family: var(--font-body);
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.chat-text::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+/* Send button */
+.chat-send {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.chat-loading {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 6px 2px;
+}
+
+.chat-loading span {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  animation: chatDot 1.2s infinite ease-in-out;
+}
+
+.chat-loading span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.chat-loading span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes chatDot {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+/* ===== About ===== */
+.page-about {
+  width: 100%;
+  height: 100%;
+}
+
+/* Center text — same idea as Home, but different font sizes */
+.about-center {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.about-title {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: 64px;
+  letter-spacing: 20px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.about-subtitle {
+  margin-top: 22px;
+  font-family: var(--font-body);
+  font-size: 24px;
+  letter-spacing: 8px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Boxes */
+.about-left {
+  position: absolute;
+  left: 60px; /* same inset rule as Home */
+  top: 58%;
+  transform: translateY(-50%);
+}
+
+.about-right {
+  position: absolute;
+  right: 60px; /* mirror inset */
+  top: 58%;
+  transform: translateY(-50%);
+}
+
+.about-box {
+  width: 400px;
+  height: 475px;
+  padding: 28px; /* can tweak after visual match */
+  color: rgba(0, 0, 0, 0.55);
+  font-family: var(--font-body);
+  font-size: 20px;
+  letter-spacing: 3px;
+  line-height: 1.5;
+}
+
+.about-box--small {
+  height: 260px;
+}
+/* ===== Contact ===== */
+.page-contact {
+  width: 100%;
+  height: 100%;
+}
+
+/* Center text */
+.contact-center {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.contact-title {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: 64px;
+  letter-spacing: 20px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.contact-subtitle {
+  margin-top: 22px;
+  font-family: var(--font-body);
+  font-size: 24px;
+  letter-spacing: 8px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Right box */
+.contact-right {
+  position: absolute;
+  right: 60px; /* same inset rule */
+  top: 58%;
+  transform: translateY(-50%);
+}
+
+.contact-box {
+  width: 400px;
+  height: 370px;
+
+  padding: 28px;
+  color: rgba(0, 0, 0, 0.55);
+  font-family: var(--font-body);
+  font-size: 20px;
+  letter-spacing: 3px;
+  line-height: 1.5;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.contact-divider {
+  height: 1px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.contact-cta {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: rgba(0, 0, 0, 0.45);
+}
+/* Make contact box interactive even though #app is pointer-events:none */
+.contact,
+.contact * {
+  pointer-events: auto;
+}
+
+/* Keep the paragraph style consistent */
+.contact-text {
+  margin: 0;
+}
+
+/* Input row at bottom */
+.contact-input {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+}
+
+/* Input field matches the subtle UI look */
+.contact-textfield {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+
+  font-family: var(--font-body);
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.contact-textfield::placeholder {
+  color: rgba(0, 0, 0, 0.35);
+}

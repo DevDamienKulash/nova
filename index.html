@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Nova — Home</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- Spline Layer -->
+    <div id="spline-layer">
+      <script
+        type="module"
+        src="https://unpkg.com/@splinetool/viewer@1.12.48/build/spline-viewer.js"
+      ></script>
+
+      <spline-viewer
+        url="https://prod.spline.design/2lLVb8nZ85HilJOV/scene.splinecode"
+      ></spline-viewer>
+    </div>
+
+    <!-- App Content -->
+    <div id="app">
+      <!-- Navigation -->
+      <nav class="nav">
+        <div class="nav-inner">
+          <button class="nav-btn active" data-target="home">Home</button>
+          <button class="nav-btn" data-target="about">About</button>
+          <button class="nav-btn" data-target="contact">Contact</button>
+        </div>
+      </nav>
+
+      <!-- Home Page -->
+      <main class="page page-home active" data-page="home">
+        <div class="frame home-frame">
+          <div class="home-left">
+            <div class="conversation-box glass chat">
+              <div class="chat-messages" aria-label="Conversation"></div>
+              <div class="chat-loading" aria-label="Nova is thinking" hidden>
+                <span></span><span></span><span></span>
+              </div>
+
+              <div class="chat-divider"></div>
+
+              <form class="chat-input" autocomplete="off">
+                <input
+                  class="chat-text"
+                  type="text"
+                  placeholder="Start a conversation"
+                  aria-label="Start a conversation"
+                />
+                <button class="chat-send" type="submit" aria-label="Send">
+                  <span class="chat-arrow">↑</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="home-center">
+            <h1 class="home-title">MEET&nbsp;NOVA</h1>
+            <p class="home-subtitle">A CALMER WAY TO THINK</p>
+          </div>
+        </div>
+      </main>
+      <!-- About Page -->
+      <main class="page page-about" data-page="about">
+        <div class="frame about-frame">
+          <!-- Left box (400x475) -->
+          <div class="about-left">
+            <div class="about-box glass">
+              <p>About left body box content goes here.</p>
+            </div>
+          </div>
+
+          <!-- Center headline/subhead (center axis, above robot) -->
+          <div class="about-center">
+            <h1 class="about-title">ABOUT&nbsp;NOVA</h1>
+            <p class="about-subtitle">A CALMER WAY TO THINK</p>
+          </div>
+
+          <!-- Right box (400x260) -->
+          <div class="about-right">
+            <div class="about-box about-box--small glass">
+              <p>About right body box content goes here.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- Contact Page -->
+      <main class="page page-contact" data-page="contact">
+        <div class="frame contact-frame">
+          <!-- Center headline/subhead -->
+          <div class="contact-center">
+            <h1 class="contact-title">GET&nbsp;IN&nbsp;TOUCH</h1>
+            <p class="contact-subtitle">NOVA IS STILL LEARNING</p>
+          </div>
+
+          <!-- Right box (400x370) -->
+          <div class="contact-right">
+            <div class="contact-box glass contact">
+              <p class="contact-text">
+                If you have questions, thoughts, or feedback, we’d love to hear
+                from you. Every message helps shape what Nova becomes.
+              </p>
+
+              <div class="contact-divider"></div>
+
+              <form class="contact-input" autocomplete="off">
+                <input
+                  class="contact-textfield"
+                  type="text"
+                  placeholder="Send us a message"
+                  aria-label="Send us a message"
+                />
+                <button class="chat-send" type="submit" aria-label="Send">
+                  <span class="chat-arrow">↑</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
