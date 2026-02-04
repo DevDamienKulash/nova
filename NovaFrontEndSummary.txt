@@ -1,0 +1,225 @@
+# Nova Front-End — Project Summary
+
+## Project Overview
+
+**Nova** is a calm, interactive front-end experience designed to showcase thoughtful UI systems, spatial layout, and subtle interaction design. The project focuses on visual clarity, motion restraint, and clean architectural decisions rather than heavy frameworks or premature backend complexity.
+
+The site is a **single-page application** with three conceptual pages — **Home, About, Contact** — driven entirely by state, not navigation reloads or scrolling.
+
+---
+
+## Goals of the Project
+
+* Build a visually refined, portfolio-ready front end
+* Translate a high-fidelity design mockup into production-quality HTML/CSS/JS
+* Integrate a full-screen interactive 3D element (Spline)
+* Create a reusable layout system that scales across multiple page states
+* Keep the implementation framework-free and understandable
+
+---
+
+## Core Technical Decisions
+
+### 1. Technology Stack
+
+* **HTML** — semantic structure
+* **CSS** — layout, transitions, design system tokens
+* **Vanilla JavaScript** — state management and interactions
+* **Spline** — interactive 3D robot element
+* **Git / GitHub** — version control and project history
+
+No frameworks were used intentionally to demonstrate strong fundamentals.
+
+---
+
+## Layout & Architecture
+
+### Single-Page, No-Scroll Model
+
+* The entire experience lives inside a fixed viewport
+* Navigation swaps page *states*, not URLs or scroll positions
+* This allowed precise control over composition and animation
+
+### Center-Axis Layout System
+
+A reusable layout model was created around a **true visual center axis**:
+
+* Headlines and the Spline robot are always centered relative to the viewport
+* Supporting content boxes are offset left/right *without affecting the center*
+* This system was reused across Home, About, and Contact
+
+Key concepts:
+
+* A fixed **1440px frame** centered in the viewport
+* Absolute positioning inside the frame
+* Left/right inset content boxes with consistent spacing
+
+---
+
+## Design System
+
+### Typography
+
+* **Sansation** — headings
+* **Sansation Light** — subheadings and body text
+
+Defined hierarchy:
+
+* Home headline: 140px
+* About/Contact headlines: 64px
+* Subheadings: 24px
+* Body text: 20px
+* Navigation: 28px
+
+Custom letter-spacing was applied per text role to match the visual identity.
+
+---
+
+### Color & Background
+
+* Gradient-based backgrounds with page-specific top colors
+* Shared middle and bottom gradient tones
+* Gradient state updates dynamically based on active page
+
+---
+
+### Glassmorphism Components
+
+* Semi-transparent cards
+* Soft borders
+* Backdrop blur
+* Rounded corners
+
+The glass style was abstracted into reusable classes and applied consistently across components.
+
+---
+
+## Spline Integration
+
+### Full-Screen 3D Element
+
+* Spline robot spans the entire viewport
+* Positioned behind all UI layers
+* Reacts to mouse movement globally
+
+### Interaction Challenges Solved
+
+* Prevented UI layers from blocking mouse input
+* Carefully managed `pointer-events` to allow:
+
+  * Global mouse tracking for Spline
+  * Local interactivity for nav buttons and inputs
+
+---
+
+## Navigation & State Management
+
+### Navigation System
+
+* Fixed-position glass nav bar
+* Active state tracking
+* Subtle hover interactions
+
+### Page Switching Logic
+
+* JavaScript-driven state switching
+* CSS-based transitions (fade, blur, vertical drift)
+* No display toggling — all pages layered and animated
+
+---
+
+## Motion & Transitions
+
+Motion was intentionally restrained:
+
+* Slow, calm page transitions
+* Subtle opacity, blur, and vertical movement
+* No unnecessary animation noise
+
+Transition timing was tuned to feel premium rather than fast.
+
+---
+
+## Interactive UI Components
+
+### Home Chat UI
+
+* Chat-style conversation box
+* Message area
+* Divider
+* Text input + send button
+* "Thinking" loader indicator (3-dot animation)
+
+The chat system is UI-complete and backend-ready.
+
+---
+
+### Contact Message UI
+
+* Text content anchored to top of card
+* Divider
+* Input + send button anchored to bottom
+* Reuses the same send button system as Home
+
+---
+
+## Accessibility & UX Considerations
+
+* Keyboard-focusable navigation buttons
+* Clear input focus states
+* Predictable interaction zones
+* Calm visual hierarchy
+
+---
+
+## Version Control & Workflow
+
+* Project initialized as a Git repository
+* Clean commit history
+* Milestone tagging (design-complete checkpoint)
+* Repository structured for future extension
+
+---
+
+## Key Problems Solved
+
+* Maintaining a true visual center while placing asymmetric content
+* Integrating interactive 3D without blocking UI
+* Managing pointer-events across layered content
+* Creating smooth transitions without breaking interaction
+* Keeping CSS clean while iterating on layout
+
+---
+
+## Project Outcome
+
+The Nova front-end project resulted in:
+
+* A complete, visually polished front end
+* A reusable layout and interaction system
+* A strong portfolio piece demonstrating design-to-code execution
+* A stable foundation for future backend integration
+
+The project was intentionally paused at a **design-complete** state to preserve clarity and avoid over-extension.
+
+---
+
+## How This Project Can Be Presented
+
+This project can be framed as:
+
+* A front-end architecture case study
+* A design-system-driven UI build
+* An example of 3D + UI integration on the web
+* A demonstration of thoughtful interaction design
+
+---
+
+## Status
+
+**Front-End Design: Complete**
+**Backend / AI Integration: Planned (Not Implemented)**
+
+---
+
+*This document exists to support portfolio writing, interviews, and self-marketing.*
