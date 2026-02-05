@@ -236,8 +236,22 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   gap: 10px;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Optional: subtle scrollbar (Chrome/Edge/Safari) */
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+.chat-messages::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+}
+.chat-messages::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 /* Divider */
@@ -488,4 +502,57 @@ body {
 
 .contact-textfield::placeholder {
   color: rgba(0, 0, 0, 0.35);
+}
+/* Persona row */
+.chat-persona-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 2px;
+}
+
+.chat-persona-label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.chat-persona {
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  padding: 6px 10px;
+
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: rgba(0, 0, 0, 0.55);
+  outline: none;
+}
+
+/* Messages */
+.msg {
+  max-width: 88%;
+  padding: 10px 12px;
+  border-radius: 16px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.6px;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.58);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.msg.user {
+  margin-left: auto;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.msg.assistant {
+  margin-right: auto;
 }
